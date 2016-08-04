@@ -10,7 +10,7 @@
 
       // onload callback
       function drawChart() {
-        console.log("refreshing chart at " + (new Date) + "...");
+        console.log("refreshing everything at " + (new Date) + "...");
         var public_key = 'XGwJ14AM9LUa1zRvlNXb';
 
         // JSONP request
@@ -22,8 +22,8 @@
 
           var data = new google.visualization.DataTable();
 
-          data.addColumn('datetime', 'timestamp');
-          data.addColumn('number', 'temperaturef');
+          data.addColumn('datetime', '');
+          data.addColumn('number', '°F');
         //   data.addColumn('number', 'humidityrh');
           //data.addColumn('number', 'pressurembar');
 
@@ -39,7 +39,8 @@
           var chart = new google.charts.Line($('#chart').get(0));
 
           chart.draw(data, {
-            title: 'Canterbury WX'
+            title: 'Temperature',
+            legend: {position: 'none'},
           });
 
           var recentestRow = results[0];
@@ -49,7 +50,7 @@
           $("#lastTimestamp").html(d.toLocaleTimeString());
           $("#lastTimestampDetail").html(d);
       }).always(function(){
-          setTimeout(drawChart, 10*60*1000);
+          setTimeout(drawChart, 5*60*1000);
       });
 
       }
@@ -83,6 +84,7 @@ footer {
       <div id="lastTimestamp" style="font-size:48px"></div>
       <div id="lastTimestampDetail" style="font-style:italic"></div>
       <div id="chart" style="width: 100%;"></div>
+    <br/><br/><br/>
     <footer>
         <div>Hardware and software by Beren. <a href="https://github.com/n8v/wxfront">Web interface</a> by Nathan. <a href="https://data.sparkfun.com/canterburywx">Data hosted by phant</a>.</div>
     </footer>
