@@ -10,7 +10,7 @@
 
       // onload callback
       function drawChart() {
-
+        console.log("refreshing chart at " + (new Date) + "...");
         var public_key = 'XGwJ14AM9LUa1zRvlNXb';
 
         // JSONP request
@@ -48,7 +48,9 @@
           $("#currentTemp").html(recentestRow["temperaturef"] + "&deg;F");
           $("#lastTimestamp").html(d.toLocaleTimeString());
           $("#lastTimestampDetail").html(d);
-        });
+      }).always(function(){
+          setTimeout(drawChart, 10*60*1000);
+      });
 
       }
 
@@ -69,10 +71,15 @@ footer {
     font-size: 12px;
     font-style: italic;
 }
+.timelabel {
+    font-size:10px;
+    text-transform: uppercase;
+}
 </style>
   </head>
   <body>
-      <div id="currentTemp" style="font-size:128px">&deg;F</div>
+      <div id="currentTemp" style="font-size:128px"><i>loading...</i></div>
+      <div class="timelabel">sampled at</div>
       <div id="lastTimestamp" style="font-size:48px"></div>
       <div id="lastTimestampDetail" style="font-style:italic"></div>
       <div id="chart" style="width: 100%;"></div>
