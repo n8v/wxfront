@@ -3,9 +3,8 @@
   <head>
     <!-- based mostly on the tutorial at http://phant.io/graphing/google/2014/07/07/graphing-data/ -->
     <!-- EXTERNAL LIBS-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="https://www.google.com/jsapi"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!-- EXAMPLE SCRIPT -->
     <script>
 
@@ -54,12 +53,12 @@
       }
 
       // load chart lib
-      google.load('visualization', '1', {
+      google.charts.load('visualization', '1', {
         packages: ['corechart']
       });
 
       // call drawChart once google charts is loaded
-      google.setOnLoadCallback(drawChart);
+      google.charts.setOnLoadCallback(drawChart);
 
     </script>
 <style>
