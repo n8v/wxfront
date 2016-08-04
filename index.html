@@ -36,7 +36,7 @@
             ]);
           });
 
-          var chart = new google.visualization.LineChart($('#chart').get(0));
+          var chart = new google.charts.Line($('#chart').get(0));
 
           chart.draw(data, {
             title: 'Canterbury WX'
@@ -56,7 +56,7 @@
 
       // load chart lib
       google.charts.load('visualization', '1', {
-        packages: ['corechart']
+        packages: ['line']
       });
 
       // call drawChart once google charts is loaded
